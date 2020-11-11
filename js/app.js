@@ -26,17 +26,18 @@ $(document).ready(function(){
 			{
 				$(this).toggleClass("toggle");
 				changeImg(this);
+				
 				if($(this).attr("src") === card)
 				{
 					$(".toggle").fadeOut(700);
 					$(".toggle").addClass("wonPairs");
 					$(".toggle").toggleClass("toggle");
 					wonPairs(card);
-
+                    //If game is won
 					if($(".wonPairs").length >=  8)
 					{
 						$(".wonPairs").remove();
-						$("#displayMessage").html("CONGRADULATIONS! You Win!");
+						$("#displayMessage").html("Congratulations! You Win!");
 						$("#displayMessage").fadeIn(3000);
 					}
 				}
@@ -45,6 +46,7 @@ $(document).ready(function(){
 		else if($(this).hasClass("toggle")){
 			$(this).toggleClass("toggle");
 			changeImg(this);
+			card = $(".toggle").attr("src");
 		}	
 		
     })
@@ -59,6 +61,7 @@ $(document).ready(function(){
 	//Function to change the image of the card from the back of card
 	//image to whatever face card value
 	function changeImg(A){
+		console.log(card);
 		if(!$(A).hasClass("toggle")){
 			$(A).attr("src", "img/BK.gif")
 		} 
